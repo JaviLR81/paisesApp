@@ -18,20 +18,21 @@
 
 <hr>
 
-<div class="alert alert-danger">
-  No se encontro nada con el término ASDFDS
+<div *ngIf="hayError" class="alert alert-danger">
+  No se encontro nada con el término {{ termino }}
 </div>
 
 
 <div class="row">
   <div class="col">
-      <table class="table table-hover">
+      <table *ngIf="!hayError" class="table table-hover">
           <thead>
               <tr>
                 <th>#</th>
                 <th>Bandera</th>
                 <th>Nombre</th>
                 <th>Población</th>
+                
                 <th></th>
               </tr>
           </thead>
