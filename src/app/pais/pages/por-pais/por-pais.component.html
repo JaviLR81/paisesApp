@@ -32,18 +32,20 @@
                 <th>Bandera</th>
                 <th>Nombre</th>
                 <th>Población</th>
-                
+
                 <th></th>
               </tr>
           </thead>
           <tbody>
-            <tr>
-                <td>1</td>
-                <td>México</td>
-                <td>SomeText</td>
-                <td>SomeText</td>
+            <tr *ngFor="let pais of paises; let i = index">
+              <td>{{ i }}</td>
+                <td> {{ pais.name }} </td>
                 <td>
-                  <a href="/pais/csrs">Some Link ...</a>
+                  <img [src]="pais.flag" class="small-flag" alt="">
+                </td>
+                <td>{{ pais.population | number }}</td>
+                <td>
+                  <a [routerLink]="['/pais',pais.alpha2Code]">Some Link ...</a>
                 </td>
             </tr>
           </tbody>

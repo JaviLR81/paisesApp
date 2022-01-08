@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Country } from '../../interfaces/pais.interface';
 import { PaisService } from '../../services/pais.service';
 
 @Component({
@@ -11,6 +12,7 @@ export class PorPaisComponent implements OnInit {
 
   termino: string = 'hello';
   hayError : boolean = false;
+  paises: Country[] = [];
 
   constructor(private paisService: PaisService) { }
 
@@ -25,13 +27,10 @@ export class PorPaisComponent implements OnInit {
       .subscribe({
         next: resp => {
           console.log(resp);
-
-          if(resp.status == 404){
-            this.hayError = true;
-          }
-
+          this.paises = resp;
         },
         error: error => {
+          this.paises = [];
           console.log("Fui un error");
           console.log(error);
         }

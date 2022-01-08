@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, of } from 'rxjs';
+import { Country } from '../interfaces/pais.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +12,11 @@ export class PaisService {
 
   constructor(private http: HttpClient) { }
 
-  buscarPais(termino: string): Observable<any>{
+  // Con llaves cuadradas por que devuelve un arreglo
+  buscarPais(termino: string): Observable<Country[]>{
 
     const url = `${this.api_url}/name/${termino}`;
-    return this.http.get(url);
+    return this.http.get<Country[]>(url);
     // .pipe(
     // Catch the error and return and empty array
     //   catchError( err =>  of([]))
