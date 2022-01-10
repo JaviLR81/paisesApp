@@ -11,6 +11,7 @@ import { PaisService } from '../../services/pais.service';
 export class PorPaisComponent implements OnInit {
 
   termino: string = '';
+  placeholder: string = 'Por pais';
   hayError : boolean = false;
   paises: Country[] = [];
 
